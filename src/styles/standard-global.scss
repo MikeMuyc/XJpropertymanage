@@ -1,0 +1,30 @@
+//主题色
+$theme-color:#3a7ef3;
+//背景修饰渐变
+@mixin background-image{
+    background-image: linear-gradient(313deg,
+            #4d9aff 0%,
+            #3b66f6 100%);
+}
+
+$success-color:#3dcb42;
+$warning-color:#ffc400;
+$error-color:#ff2c2c;
+
+$font-color:#30374a;
+$second-font-color:#7c8185;
+$third-font-color:#a0a5a9;
+
+
+.firstTitle{
+    font-size: 16px;
+    font-weight: bold;
+}
+.secondTitle{
+    font-size: 15px;
+    font-weight: bold;
+}
+.tipsText{
+    font-size: 13px;
+    color:$third-font-color;
+}
