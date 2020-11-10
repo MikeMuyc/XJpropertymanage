@@ -14,7 +14,7 @@
                     @on-toggle-expand="treeExpand"
             >
             </Tree>
-            {{code}}
+
         </vue-perfect-scrollbar>
 
     </div>

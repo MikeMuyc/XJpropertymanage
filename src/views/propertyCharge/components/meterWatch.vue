@@ -144,7 +144,7 @@
                 </div>
             </div>
         </vue-perfect-scrollbar>
-        <div style="display: none">{{code}}</div>
+
         <div slot="footer">
             <div class="pmbtn primary" style="margin-right: 10px" @click="setMeterWatch">确定</div>
             <div class="pmbtn" @click="closeWatch">取消</div>

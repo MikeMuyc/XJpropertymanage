@@ -1440,8 +1440,6 @@
                 <div class="pmbtn" @click="closeAddStandard">取消</div>
             </div>
         </el-dialog>
-        {{code}}
-
     </div>
 </template>
 <script lang="ts">
