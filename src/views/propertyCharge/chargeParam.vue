@@ -1440,7 +1440,7 @@
                 <div class="pmbtn" @click="closeAddStandard">取消</div>
             </div>
         </el-dialog>
-
+        {{code}}
 
     </div>
 </template>
@@ -1470,7 +1470,7 @@
     import mulSelect from './components/mixSelect.vue';
     import projectList from './components/chargeParamProjectList.vue';
 
-
+    import * as paramData from '@manage/json/chargeParam'
     @Component({
         components: {
             Tree,
@@ -1895,11 +1895,13 @@
                 this.addStandardObject.paymentStandardMeter.minimumUsed = 0
             }
         }
+        code:any  = null
 
         //结构树
         async gethouseData1() {
-            try{
+            /*try{
                 let {data} = await api.getTree2(0, null)
+
                 this.buildingTree = JSON.parse(JSON.stringify(data).replace(/title/g, 'name'));
                 this.buildingTree.forEach(item => {
                     if (item.belongNum !== 0) {
@@ -1925,7 +1927,13 @@
             }catch (e) {
                 this.buildingTree = [];
                 this.$message.error(`获取小区数据失败！`)
-            }
+            }*/
+            this.buildingTree = JSON.parse(JSON.stringify(paramData.orgList).replace(/title/g, 'name'));
+            this.buildingTree.forEach(item => {
+                if (item.belongNum !== 0) {
+                    item.children = [{}];
+                }
+            })
         }
 
         refresh() {
@@ -1934,10 +1942,10 @@
 
         //查询所有的项目
         async getProjectList(id: string) {
-            let {data} = await api.getProjectList('', '', id)
-            data.map(item => item.level = 2)
-            this.buildingTree.find(x => x.id === id).children = data
-            this.projectList = data;
+            // let {data} = await api.getProjectList('', '', id)
+            // data.map(item => item.level = 2)
+            this.buildingTree.find(x => x.id === id).children = paramData.staList
+            this.projectList = paramData.staList;
 
         }
 
@@ -1958,6 +1966,7 @@
             this.loading = true
             try {
                 let {data} = await api.getStandard(this.curProObj.id)
+
                 this.standard = data
                 this.pages.pageSize = data.length
                 this.pages.totalElements = data.length

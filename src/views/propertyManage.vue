@@ -59,10 +59,10 @@
                         label: "抄表管理",
                         routeName: "抄表管理",
                     },
-                    {
-                        label: "预交水费",
-                        routeName: "预交水费",
-                    },
+                    // {
+                    //     label: "预交水费",
+                    //     routeName: "预交水费",
+                    // },
                     {
                         label: "预收款管理",
                         routeName: "预收款管理",

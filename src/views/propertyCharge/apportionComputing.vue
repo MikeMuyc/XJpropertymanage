@@ -469,6 +469,7 @@
     import apportionSet from './apportionSet.vue';
     import resultTable from './apportionComputing_result.vue';
     import * as api from '@manage/api/propertyCharge/apportion'
+    import * as appData from '@manage/json/apportionComputing'
 
     @Component({
         components: {
@@ -637,26 +638,13 @@
             this.timeList = val
         }
 
+        code:any = null;
         async getApportionList() {
             this.loading = true;
-            try {
-                let {data: {content, totalElements}} = await api.getApportionrecord({
-                    keyword: this.keyword,
-                    pageNum: this.pages.pageNum,
-                    pageSize: this.pages.pageSize,
-                    projectId: this.projectTypeCode,
-                    rdId: this.rdId,
-                    sharedBillingStatusCode: this.sharedTypeCode,
-                    startTime: this.timeList[0],
-                    endTime: this.timeList[1],
-                });
-                this.sharedList = content;
-                this.pages.totalElements = totalElements;
-                this.loading = false;
-            } catch (e) {
-                this.loading = false;
-            }
-
+            let {content, totalElements} = appData.apportinList;
+            this.sharedList = content;
+            this.pages.totalElements = totalElements;
+            this.loading = false;
         }
 
         getPage(pageNum?: number) {

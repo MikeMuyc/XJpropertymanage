@@ -298,7 +298,7 @@
     import Input from '@manage/components/normalInput.vue';
     import mixSelect from '@manage/components/mixSelect.vue';
     import * as api from '@manage/api/propertyCharge/chargeParam'
-
+    import * as paramData from '@manage/json/chargeParam'
 
     @Component({
         components: {
@@ -396,8 +396,8 @@
         //查询收费项目
         async getProjectList() {
             this.loading = true;
-            let {data} = await api.getProjectList('', '', this.rdId)
-            this.projectList = data;
+            // let {data} = await api.getProjectList('', '', this.rdId)
+            this.projectList = paramData.staList;
             this.loading = false
         }
         addProjectShow(){

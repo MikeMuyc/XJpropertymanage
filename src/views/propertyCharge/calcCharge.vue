@@ -515,7 +515,7 @@
                     <div class="label"><i class="fontSombal">*</i>计费周期</div>
                     <div class="info">
                         <DatePicker type="daterange" style="width: 100%;" @on-change="setPayDateArea"
-                                    ref="setPayDateArea" placeholder="开始时间 ~ 结束时间"></DatePicker>
+                                    ref="setPayDateArea" placeholder="开始时间 ~ 结束时间" ></DatePicker>
                     </div>
                 </div>
                 <div class="aline">
@@ -609,6 +609,8 @@
         <transition name="rightSlide">
             <noticePrint v-show="noticeShow" @close="noticeClose"></noticePrint>
         </transition>
+
+
     </div>
 </template>
 <script lang="ts">
@@ -626,6 +628,7 @@
     import * as api from '@manage/api/propertyCharge/calcCharge'
     import buildingTree from './components/buildingTreeLevel3.vue'
     import warningBox from './components/warningMessage.vue'
+    import * as orgData from '@manage/json/propertyData'
     @Component({
         components: {
             Tree,
@@ -810,13 +813,14 @@
 
 
         created(): void {
-            //this.gethouseData1()
+
             this.getProjectType()
             this.getUnit()
             this.getPayType();
         }
         inited(curObj:any){
             this.curObject = curObj;
+
             if (this.tabName === `欠款明细`) {
                 setTimeout(()=>{
                     this.setPagesize();
@@ -893,8 +897,8 @@
 
         selectInfo() {
             this.getLackOfDetail()
-            this.getTotal()
-            this.getPayAccount();
+            //this.getTotal()
+            //this.getPayAccount();
         }
 
         resetInfo() {
@@ -947,6 +951,7 @@
                 quantity: 1,
                 totalAp: '',
                 payableDate: '',
+                remark:'',
             };
             if (val === 1) {
                 this.temporaryProTypeObj.projectTypeCode = 3;
@@ -1125,6 +1130,7 @@
             this.projectList = data
         }
 
+        code:any = null;
         //欠款明细
         async getLackOfDetail() {
             this.loading = true;
@@ -1144,7 +1150,8 @@
                     projectTypeCode: this.projectType
                 }
 
-                let {data} = await api.getLackOfDetail(obj)
+                //let {data} = await api.getLackOfDetail(obj)
+                let data:any = orgData.chargeList;
                 this.pages.totalElements = data.totalElements
                 this.LackOfDetailTable = data.content
                 this.loading = false;
@@ -1272,6 +1279,8 @@
                 this.$message.warning(`请选择收费标准！`)
             } else if (this.temporaryProTypeObj.projectTypeCode === '3' && this.temporaryProTypeObj.quantity == 0) {
                 this.$message.warning(`数量不能为0`)
+            } else if (this.temporaryProTypeObj.payStartDate == '' || this.temporaryProTypeObj.payEndDate == '') {
+                this.$message.warning(`请选择收费周期！`)
             } else if (this.subFlag) {
                 this.subFlag = false;
                 let obj = {
@@ -1286,20 +1295,23 @@
                     quantity: this.temporaryProTypeObj.quantity,
                     payableDate: this.temporaryProTypeObj.payableDate,
                     temporary: 1,
+                    remark:this.temporaryProTypeObj.remark,
                 }
                 if (!this.payDateChecked) {
                     delete obj.payableDate
                 }
+
                 try {
                     await api.temporaryCharge(obj);
                     this.$message.success(`添加成功！`);
                     this.closeTemporary();
                     this.selectInfo();
-                    this.subFlag = true;
+
                 } catch (e) {
                     this.$message.error(`添加失败！`);
-                    this.subFlag = true;
+
                 }
+                this.subFlag = true;
             }
 
 

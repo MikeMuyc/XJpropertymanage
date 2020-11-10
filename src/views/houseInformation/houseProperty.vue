@@ -557,7 +557,7 @@
         </el-dialog>
         <addCommuntity ref="addCommuntity" @close="getTree"></addCommuntity>
         <viewImage ref="viewImage" @uploadSuccess="uploadSuccess" @deleteImg="deleteImg"></viewImage>
-
+        {{code}}
     </div>
 </template>
 <script lang="ts">
@@ -984,7 +984,7 @@
             if (this.buildAreaEnd === '') {
                 this.buildAreaEnd = null
             }
-            let {data} = await api.getRoomInfo(
+            /*let {data} = await api.getRoomInfo(
                 this.pages.pageNum ,
                 this.pages.pageSize,
                 this.rdId, this.roomId, '0',
@@ -994,7 +994,8 @@
                 this.roomStatusSelect,
                 this.roomTowards,
                 this.unitSelect,
-            )
+            )*/
+            let data = organization.roomList
             this.roomInfo = data.content
             this.pages.totalElements = data.totalElements
             this.roomInfoTable = JSON.parse(JSON.stringify(this.roomInfo))

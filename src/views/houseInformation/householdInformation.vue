@@ -27,8 +27,8 @@
                             <div class="infoShow">
                                 <div class="leftInfo">
                                     <i style="font-size: 18px;font-weight: bolder;" v-if="roomId">
-                                    {{buildingTree.find(x =>x.id===rdId).title}} / {{buildingName}}
-                                </i>
+                                        {{buildingTree.find(x =>x.id===rdId).title}} / {{buildingName}}
+                                    </i>
                                     <i style="font-size: 18px;font-weight: bolder;" v-if="communtityId">
                                         {{buildingTree.find(x =>x.id===rdId).title}}
                                     </i>
@@ -96,7 +96,7 @@
                                 :header-cell-style="{background:'#f4f6f9'}"
                                 v-loading="loading"
                         >
-                            <template slot="empty" >
+                            <template slot="empty">
                                 <img src="@manage/images/暂无数据.png">
                                 <br>
                                 暂无内容
@@ -157,7 +157,9 @@
                                     show-overflow-tooltip
                             >
                                 <template slot-scope="{row,$index}">
-                                    <div v-if="row.nationCode!==''">{{nation.find(x => x.code === row.nationCode).name}}</div>
+                                    <div v-if="row.nationCode!==''">{{nation.find(x => x.code ===
+                                        row.nationCode).name}}
+                                    </div>
                                     <div style="color: #a0a5a9;" v-else>暂无</div>
                                 </template>
                             </el-table-column>
@@ -168,7 +170,9 @@
                                     show-overflow-tooltip
                             >
                                 <template slot-scope="{row,$index}">
-                                    <div v-if="row.nativePlaceRegionCode!==''">{{native.find(x => x.code === row.nativePlaceRegionCode).name}}</div>
+                                    <div v-if="row.nativePlaceRegionCode!==''">{{native.find(x => x.code ===
+                                        row.nativePlaceRegionCode).name}}
+                                    </div>
                                     <div style="color: #a0a5a9;" v-else>暂无</div>
                                 </template>
                             </el-table-column>
@@ -202,7 +206,7 @@
                 </div>
                 <div class="empty" v-show="buildingTree.length===0">
                     <img src="@manage/images/暂无2.png" alt="">
-                    <p >暂无数据，请先至<i @click="goToHouse">房产信息</i>处添加小区</p>
+                    <p>暂无数据，请先至<i @click="goToHouse">房产信息</i>处添加小区</p>
                 </div>
             </div>
         </transition>
@@ -299,7 +303,8 @@
                     <div class="label">楼栋</div>
                     <div class="info">
                         <el-select style="width: 100%"
-                                   placeholder="必选" filterable clearable v-model="buildingIdSelect" @change="handleSelectChange">
+                                   placeholder="必选" filterable clearable v-model="buildingIdSelect"
+                                   @change="handleSelectChange">
                             <el-option
                                     v-for="item in buildingList"
                                     :key="item.id"
@@ -359,19 +364,22 @@
                 <div class="aline">
                     <div class="label">电表读数</div>
                     <div class="info">
-                        <Input placeholder="请输入" v-model="proprietorAndRoomOccupation.electricMeterReading" type="number"></Input>
+                        <Input placeholder="请输入" v-model="proprietorAndRoomOccupation.electricMeterReading"
+                               type="number"></Input>
                     </div>
                 </div>
                 <div class="aline">
                     <div class="label">水表读数</div>
                     <div class="info">
-                        <Input placeholder="请输入" v-model="proprietorAndRoomOccupation.waterMeterReading" type="number"></Input>
+                        <Input placeholder="请输入" v-model="proprietorAndRoomOccupation.waterMeterReading"
+                               type="number"></Input>
                     </div>
                 </div>
                 <div class="aline">
                     <div class="label">气表读数</div>
                     <div class="info">
-                        <Input placeholder="请输入" v-model="proprietorAndRoomOccupation.gasMeterReading" type="number"></Input>
+                        <Input placeholder="请输入" v-model="proprietorAndRoomOccupation.gasMeterReading"
+                               type="number"></Input>
                     </div>
                 </div>
                 <div class="aline" style="margin-bottom: 5px">
@@ -548,7 +556,7 @@
                         :data="historyInfo"
                         stripe
                 >
-                    <template slot="empty" >
+                    <template slot="empty">
                         <img src="@manage/images/暂无数据.png">
                         <br>
                         暂无内容
@@ -607,7 +615,9 @@
                             show-overflow-tooltip
                     >
                         <template slot-scope="{row,$index}">
-                            <div v-if="row.nativePlaceRegionCode!==''">{{native.find(x => x.code === row.nativePlaceRegionCode).name}}</div>
+                            <div v-if="row.nativePlaceRegionCode!==''">{{native.find(x => x.code ===
+                                row.nativePlaceRegionCode).name}}
+                            </div>
                             <div style="color: #a0a5a9;" v-else>暂无</div>
                         </template>
                     </el-table-column>
@@ -617,15 +627,16 @@
                             label="入伙时间">
                     </el-table-column>
                     <!--<el-table-column-->
-                            <!--prop="updateTime"-->
-                            <!--min-width="170"-->
-                            <!--label="变更时间"-->
+                    <!--prop="updateTime"-->
+                    <!--min-width="170"-->
+                    <!--label="变更时间"-->
                     <!--&gt;-->
                     <!--</el-table-column>-->
                 </el-table>
             </div>
         </el-dialog>
-        </div>
+        {{code}}
+    </div>
 </template>
 <script lang="ts">
     import {Vue, Component} from "vue-property-decorator"
@@ -637,7 +648,8 @@
     import householdDetail from './household_detail.vue';
     import * as api from '@manage/api/house/householdInformation'
     import * as app from '@manage/api/app'
-
+    import * as organization from '@manage/json/houseData'
+    import * as organization from '@manage/json/houseData'
     @Component({
         components: {
             Tree,
@@ -662,7 +674,8 @@
         roomId: string = '';
         proprietorInfo: any = []
         roomName: string = ''
-        buildingIdSelect:string=''
+        buildingIdSelect: string = ''
+
         renderContent(h, {root, node, data}) {
             return h('div', {
                     attrs: {
@@ -684,21 +697,21 @@
                             if (data.level === 2) {
                                 this.roomId = data.id;
                                 this.rdId = data.parentId
-                                this.buildingName=data.title
-                                this.communtityId=''
+                                this.buildingName = data.title
+                                this.communtityId = ''
                                 setTimeout(() => {
                                     this.setPagesize();
                                 }, 200)
                                 this.resentInfo()
                                 this.getGangInfoInBuilding(this.roomId)
                             } else {
-                                if(data.expand===false){
+                                if (data.expand === false) {
                                     data.expand = !data.expand;
                                 }
-                                this.rdInfo=data
+                                this.rdInfo = data
                                 this.communtityId = data.id;
-                                this.roomId=''
-                                this.rdId=this.communtityId
+                                this.roomId = ''
+                                this.rdId = this.communtityId
                                 setTimeout(() => {
                                     this.setPagesize();
                                 }, 200)
@@ -740,25 +753,26 @@
 
                 ]);
         };
-        buildingName:string=''
+
+        buildingName: string = ''
         startTime: string = null
         endTime: string = null
         keyWords: string = null
         nprCode: string = null
-        rdInfo:any=[]
+        rdInfo: any = []
         formHeight: number = 600;
         active: number = 0
-        communtityId:string=''
+        communtityId: string = ''
         loading: boolean = false;
-        proprietorAndRoomOccupation:any={
-            occupationTime:'',
-            waterMeterReading:'',
-            electricMeterReading:'',
-            gasMeterReading:'',
-            chargingDate:'',
-            ourOperators:'',
-            customerAttn:'',
-            description:''
+        proprietorAndRoomOccupation: any = {
+            occupationTime: '',
+            waterMeterReading: '',
+            electricMeterReading: '',
+            gasMeterReading: '',
+            chargingDate: '',
+            ourOperators: '',
+            customerAttn: '',
+            description: ''
         }
         addProprietor: any = {
             name: '',
@@ -773,10 +787,10 @@
                 remark: '',
             },
             proprietorAndRoom: {
-                proprietorAndRoomOccupation:{},
+                proprietorAndRoomOccupation: {},
                 roomId: '',
                 pocCode: '',
-                agreementNumber:'',
+                agreementNumber: '',
                 contractCode: '',
                 time: '',
             }
@@ -787,7 +801,7 @@
             totalElements: 0,
         };
         personId: string = ''
-        buildingList:any=[]
+        buildingList: any = []
         nation: any = []
         sex: any = []
         proprietorInfoTable: any = []
@@ -818,7 +832,7 @@
                 photoId: ''
             },
             proprietorAndRoom: {
-                proprietorAndRoomOccupation:{
+                proprietorAndRoomOccupation: {
                     chargingDate: '',
                 },
                 time: '',
@@ -826,31 +840,34 @@
                 proprietorId: ''
             }
         }
-        countGang:any=[]
-        numberGang:number=0
+        countGang: any = []
+        numberGang: number = 0
         imageUrl: string = ''
         subFlag: boolean = true
 
         created() {
-            this.getTree()
-            this.getNation()
-            this.getSex()
-            this.getRegionTree()
+            this.$nextTick(() => {
+                this.getTree()
+                this.getNation()
+                this.getSex()
+                this.getRegionTree()
+            })
         }
 
         setPagesize() {
             let refs: any = this.$refs;
             let maxHeight = refs.rightMain.clientHeight;
             let searchline = refs.searchline.clientHeight;
-            let middleline=refs.middleline.clientHeight + 26;
+            let middleline = refs.middleline.clientHeight + 26;
             this.formHeight = maxHeight - searchline - middleline - 53;
             this.pages.pageSize = Math.floor((this.formHeight - 49) / 48);
         }
 
         mounted(): void {
         }
-        goToHouse(){
-            this.$router.push( 'houseProperty')
+
+        goToHouse() {
+            this.$router.push('houseProperty')
         }
 
         handleTime(daterange) {
@@ -858,20 +875,22 @@
             this.endTime = daterange[1]
 
         }
-        handleSelectChange(val){
-            if(val===''){
-                this.roomIdList=[]
+
+        handleSelectChange(val) {
+            if (val === '') {
+                this.roomIdList = []
+            } else {
+                this.getTreeById(this.communtityId, val)
             }
-            else {
-                this.getTreeById(this.communtityId,val)
-            }
-            this.addProprietor.proprietorAndRoom.roomId=''
+            this.addProprietor.proprietorAndRoom.roomId = ''
         }
-        handleSelectRoom(val){
-            if(this.communtityId!==''&&this.buildingIdSelect===''){
+
+        handleSelectRoom(val) {
+            if (this.communtityId !== '' && this.buildingIdSelect === '') {
                 this.$message.warning('请选择楼栋')
             }
         }
+
         resentInfo() {
             let refs: any = this.$refs;
             this.nprCode = null
@@ -885,8 +904,9 @@
         handleTimeDialog(date) {
             this.addProprietor.proprietorAndRoom.time = date
         }
-        handleStartTime(date){
-            this.proprietorAndRoomOccupation.chargingDate=date
+
+        handleStartTime(date) {
+            this.proprietorAndRoomOccupation.chargingDate = date
         }
 
         handleBirthdayDialog(date) {
@@ -900,9 +920,11 @@
         handTime(date) {
             this.holdChangeInfo.proprietorAndRoom.time = date
         }
+
         get imgportadd() {
             return this.holdChangeInfo.personInfo.photoId ? this.$imgDownUrl() + `${this.holdChangeInfo.personInfo.photoId}` : null
         }
+
         upAddImg(e) {
             let fd = new FormData();
             let type = `bmp,jpg,jpeg,png`;
@@ -916,7 +938,7 @@
             } else {
                 fd.append("file", e.target.files[0]);
                 fd.append("relativePath", '');
-                let load:any = this.$loading(this.loaderOption);
+                let load: any = this.$loading(this.loaderOption);
                 setTimeout(async () => {
                     try {
                         let {data: {id}} = await app.upImg(fd, this.$upBaseUrl());
@@ -926,10 +948,11 @@
                         this.$message.error(`上传失败!`)
                     }
                     load.close()
-                    (<HTMLInputElement>document.getElementById('addupload')).value='';
+                    (<HTMLInputElement>document.getElementById('addupload')).value = '';
                 }, 200);
             }
         }
+
         getPage(pageNum?: number) {
             if (pageNum) {
                 this.pages.pageNum = pageNum;
@@ -944,11 +967,10 @@
             this.addProprietor.proprietorAndRoom.time = this.$utils.dateFormat(myDate, 'time')
             this.registVisible = true
             console.log('11')
-            if(this.communtityId===''){
+            if (this.communtityId === '') {
                 this.getTreeById(this.rdId, this.roomId)
-            }
-            else {
-                this.roomIdList=[]
+            } else {
+                this.roomIdList = []
             }
         }
 
@@ -957,15 +979,15 @@
             this.active = 0
             let refs: any = this.$refs;
             refs.startTimeRef.handleClear()
-            this.proprietorAndRoomOccupation={
-                occupationTime:'',
-                waterMeterReading:'',
-                electricMeterReading:'',
-                gasMeterReading:'',
-                chargingDate:'',
-                ourOperators:'',
-                customerAttn:'',
-                description:''
+            this.proprietorAndRoomOccupation = {
+                occupationTime: '',
+                waterMeterReading: '',
+                electricMeterReading: '',
+                gasMeterReading: '',
+                chargingDate: '',
+                ourOperators: '',
+                customerAttn: '',
+                description: ''
             }
             this.addProprietor = {
                 name: '',
@@ -982,11 +1004,11 @@
                     roomId: '',
                     pocCode: '',
                     contractCode: '',
-                    agreementNumber:'',
+                    agreementNumber: '',
                     time: '',
                 }
             }
-            this.buildingIdSelect=''
+            this.buildingIdSelect = ''
         }
 
         closeHouseholdChange() {
@@ -1006,10 +1028,10 @@
                     photoId: ''
                 },
                 proprietorAndRoom: {
-                    proprietorAndRoomOccupation:{
+                    proprietorAndRoomOccupation: {
                         chargingDate: '',
                     },
-                    id:'',
+                    id: '',
                     time: '',
                     roomId: '',
                     proprietorId: ''
@@ -1027,7 +1049,7 @@
                 if ((!this.$utils.phoneLimit(this.addProprietor.personInfo.tel))) {
                     this.$message.warning('请输入正确的联系方式')
                 } else {
-                    if ((!this.$utils.idCardLimit(this.addProprietor.personInfo.cardNumber))&&this.addProprietor.personInfo.cardNumber!=='') {
+                    if ((!this.$utils.idCardLimit(this.addProprietor.personInfo.cardNumber)) && this.addProprietor.personInfo.cardNumber !== '') {
                         this.$message.warning('请输入正确的身份证号')
                     } else {
                         this.active++
@@ -1066,35 +1088,35 @@
             this.getProprietorInfo()
         }
 
+        code: any = null;
+
         //组织树
         async getTree() {
-            let {data} = await api.getTree()
+            // let {data} = await api.getTree()
+            let data: any = organization.organizationList;
             this.buildingTree = data
-            if(data.length>0){
-                if(this.communtityId===''&&this.roomId===''){
-                    this.communtityId=data[0].id
+            if (data.length > 0) {
+                if (this.communtityId === '' && this.roomId === '') {
+                    this.communtityId = data[0].id
                     data[0].expand = true
-                    this.rdInfo.title=data[0].title
-                    this.rdId=this.communtityId
+                    this.rdInfo.title = data[0].title
+                    this.rdId = this.communtityId
                     this.getBuildingList()
                     this.setPagesize()
                     this.getProprietorInfo()
+                } else if (this.roomId !== '') {
+                    this.buildingTree.find(x => x.id === this.rdId).expand = true
+                } else {
+                    this.buildingTree.find(x => x.id === this.communtityId).expand = true
                 }
-                else if(this.roomId!==''){
-                    this.buildingTree.find(x => x.id === this.rdId).expand=true
-                }
-                else {
-                    this.buildingTree.find(x => x.id === this.communtityId).expand=true
-                }
-            }
-            else {
-                this.buildingTree=[]
+            } else {
+                this.buildingTree = []
             }
         }
 
         //查询房间列表名称
-        async getTreeById(rdId,roomId) {
-            let {data} = await api.getRoomNameList(rdId,roomId)
+        async getTreeById(rdId, roomId) {
+            let {data} = await api.getRoomNameList(rdId, roomId)
             this.roomIdList = data
         }
 
@@ -1111,12 +1133,13 @@
             if (this.nprCode === '') {
                 this.nprCode = null
             }
-            let {data} = await api.getProprietorInfo(
+            /*let {data} = await api.getProprietorInfo(
                 this.pages.pageNum + '',
                 this.pages.pageSize + '',
                 this.rdId,
                 this.roomId, this.startTime, this.endTime, this.keyWords, this.nprCode
-            )
+            )*/
+            let data:any = organization.citizenList;
             this.proprietorInfo = data.content
             this.proprietorInfoTable = JSON.parse(JSON.stringify(this.proprietorInfo))
             this.pages.totalElements = data.totalElements
@@ -1131,31 +1154,31 @@
             if (this.subFlag) {
                 this.subFlag = false
                 this.addProprietor.name = this.addProprietor.personInfo.name
-                this.proprietorAndRoomOccupation.description=this.addProprietor.personInfo.remark
-                this.proprietorAndRoomOccupation.occupationTime=this.addProprietor.proprietorAndRoom.time
-                this.proprietorAndRoomOccupation.gasMeterReading=Number(this.proprietorAndRoomOccupation.gasMeterReading)
-                this.proprietorAndRoomOccupation.waterMeterReading=Number(this.proprietorAndRoomOccupation.waterMeterReading)
-                this.proprietorAndRoomOccupation.electricMeterReading=Number(this.proprietorAndRoomOccupation.electricMeterReading)
-                this.addProprietor.proprietorAndRoom.proprietorAndRoomOccupation=this.proprietorAndRoomOccupation
-                if(this.addProprietor.proprietorAndRoom.proprietorAndRoomOccupation.chargingDate===''){
-                    this.addProprietor.proprietorAndRoom.proprietorAndRoomOccupation.chargingDate=null
+                this.proprietorAndRoomOccupation.description = this.addProprietor.personInfo.remark
+                this.proprietorAndRoomOccupation.occupationTime = this.addProprietor.proprietorAndRoom.time
+                this.proprietorAndRoomOccupation.gasMeterReading = Number(this.proprietorAndRoomOccupation.gasMeterReading)
+                this.proprietorAndRoomOccupation.waterMeterReading = Number(this.proprietorAndRoomOccupation.waterMeterReading)
+                this.proprietorAndRoomOccupation.electricMeterReading = Number(this.proprietorAndRoomOccupation.electricMeterReading)
+                this.addProprietor.proprietorAndRoom.proprietorAndRoomOccupation = this.proprietorAndRoomOccupation
+                if (this.addProprietor.proprietorAndRoom.proprietorAndRoomOccupation.chargingDate === '') {
+                    this.addProprietor.proprietorAndRoom.proprietorAndRoomOccupation.chargingDate = null
                 }
-                if(this.addProprietor.personInfo.birthday===''){
-                    this.addProprietor.personInfo.birthday=null
+                if (this.addProprietor.personInfo.birthday === '') {
+                    this.addProprietor.personInfo.birthday = null
                 }
-                    if (this.addProprietor.proprietorAndRoom.time === '') {
-                        this.$message.warning('请输入入伙时间')
-                    } else {
-                        try {
-                            await api.addProprietorInfo(this.addProprietor)
-                            this.$message.success('登记成功')
-                            this.registVisible = false
-                            this.resentInfo()
-                            this.closeRegistDialog()
-                        } catch (e) {
-                            this.$message.error('登记失败,请重新登记')
-                        }
+                if (this.addProprietor.proprietorAndRoom.time === '') {
+                    this.$message.warning('请输入入伙时间')
+                } else {
+                    try {
+                        await api.addProprietorInfo(this.addProprietor)
+                        this.$message.success('登记成功')
+                        this.registVisible = false
+                        this.resentInfo()
+                        this.closeRegistDialog()
+                    } catch (e) {
+                        this.$message.error('登记失败,请重新登记')
                     }
+                }
             }
             this.subFlag = true
         }
@@ -1172,7 +1195,7 @@
                     if ((!this.$utils.phoneLimit(this.holdChangeInfo.personInfo.tel))) {
                         this.$message.warning('请输入正确的联系方式')
                     } else {
-                        if ((!this.$utils.idCardLimit(this.holdChangeInfo.personInfo.cardNumber))&&this.holdChangeInfo.personInfo.cardNumber!=='') {
+                        if ((!this.$utils.idCardLimit(this.holdChangeInfo.personInfo.cardNumber)) && this.holdChangeInfo.personInfo.cardNumber !== '') {
                             this.$message.warning('请输入正确的身份证号')
                         } else {
                             const confirmResult = await this.$confirm(
@@ -1192,9 +1215,9 @@
                             this.holdChangeInfo.name = this.holdChangeInfo.personInfo.name
                             this.holdChangeInfo.proprietorAndRoom.roomId = this.proprietorDetial.proprietor.proprietorAndRoom.roomId
                             this.holdChangeInfo.proprietorAndRoom.id = this.proprietorDetial.proprietor.proprietorAndRoom.id
-                            this.holdChangeInfo.proprietorAndRoom.proprietorAndRoomOccupation.chargingDate=null
-                            if(this.holdChangeInfo.personInfo.birthday===''){
-                                this.holdChangeInfo.personInfo.birthday=null
+                            this.holdChangeInfo.proprietorAndRoom.proprietorAndRoomOccupation.chargingDate = null
+                            if (this.holdChangeInfo.personInfo.birthday === '') {
+                                this.holdChangeInfo.personInfo.birthday = null
                             }
                             try {
                                 await api.holdChange(this.holdChangeInfo)
@@ -1216,11 +1239,13 @@
             }
             this.subFlag = true;
         }
+
         //查询楼栋
-        async getBuildingList(){
-            let {data} =await api.getBuildingList(this.communtityId)
-            this.buildingList=data
+        async getBuildingList() {
+            let {data} = await api.getBuildingList(this.communtityId)
+            this.buildingList = data
         }
+
         //删除业主信息
         async deleteInfo(id) {
             const confirmResult = await this.$confirm(
@@ -1246,7 +1271,7 @@
                 this.endTime = null
                 this.keyWords = null
                 refs.dateForm.handleClear()
-                if(this.proprietorInfo.length===1&&(this.pages.pageNum>1)){
+                if (this.proprietorInfo.length === 1 && (this.pages.pageNum > 1)) {
                     this.pages.pageNum--
                 }
                 this.getProprietorInfo()
@@ -1305,14 +1330,13 @@
         }
 
         //建筑物下的户主数
-        async getGangInfoInBuilding(id){
+        async getGangInfoInBuilding(id) {
             let {data} = await api.getGangInfoInBuilding(id)
             this.countGang = data
-            if(this.countGang.length>0){
-                this.numberGang=this.countGang[0].count
-            }
-            else {
-                this.numberGang=0
+            if (this.countGang.length > 0) {
+                this.numberGang = this.countGang[0].count
+            } else {
+                this.numberGang = 0
             }
         }
     }
@@ -1347,6 +1371,7 @@
                 height: 100%;
                 margin: 0 5px 0 20px;
                 overflow: hidden;
+
                 .middleline {
                     height: 80px;
                     background-color: #f8f9fc;
@@ -1389,6 +1414,7 @@
                                     margin-right: 45px;
                                     display: inline-flex;
                                     align-items: center;
+
                                     &:last-child {
                                         margin-right: 0;
                                     }
@@ -1398,6 +1424,7 @@
                                         color: #3a7ef3;
                                         padding-right: 10px;
                                     }
+
                                     .item {
                                         color: #7c8185;
                                     }
@@ -1411,13 +1438,14 @@
                             align-items: center;
                             cursor: pointer;
 
-                            .iconfont{
+                            .iconfont {
                                 margin-right: 6px;
                                 font-size: 16px;
                             }
                         }
                     }
                 }
+
                 .searchline {
                     display: flex;
                     flex-wrap: wrap;
@@ -1474,22 +1502,26 @@
         }
 
     }
+
     .empty {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         margin-top: 15%;
+
         > p {
             color: $third-font-color;
             margin-top: 10px;
             font-size: 16px;
-            i{
+
+            i {
                 color: #3a7ef3;
                 cursor: pointer;
             }
         }
     }
+
     .borderLine {
         width: 100%;
         height: 1px;
@@ -1570,6 +1602,7 @@
     .ivu-radio-wrapper {
         padding-right: 15px;
     }
+
     .upfileInfo {
         width: 100px;
         height: 140px;
@@ -1579,11 +1612,13 @@
         justify-content: center;
         cursor: pointer;
         position: relative;
+
         .iconfont {
             color: #dde4eb;
             font-size: 48px;
             line-height: 1;
         }
+
         .item {
             position: absolute;
             bottom: 0;
@@ -1599,6 +1634,7 @@
             text-align: center;
             line-height: 28px;
         }
+
         img {
             max-width: 100%;
             max-height: 100%;

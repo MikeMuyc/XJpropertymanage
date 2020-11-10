@@ -62,7 +62,7 @@
             cursor: pointer;
             user-select: none;
             color: $font-color;
-            transition:  all.3s;
+            transition: all .3s;
             &.active{
                 color: $theme-color;
             }

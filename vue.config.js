@@ -11,7 +11,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-    publicPath:'',
+    publicPath:'./',
     lintOnSave: true,
     transpileDependencies: [
         "@suc/authox/plugins/authox-vue",

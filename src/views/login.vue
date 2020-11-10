@@ -155,7 +155,7 @@
                         }
 
                         localStorage.setItem("userAccountList", JSON.stringify(this.userAccountList));
-
+                        this.$router.push({name:'manage'})
                     }
                     else {
                         Message({

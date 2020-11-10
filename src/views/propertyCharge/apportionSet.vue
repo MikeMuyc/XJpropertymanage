@@ -367,7 +367,7 @@
     import Input from '@manage/components/normalInput.vue';
     import * as api from '@manage/api/propertyCharge/apportion'
     import apsDialog from './components/apportionSetDialog.vue';
-
+    import * as appData from '@manage/json/apportionComputing'
     @Component({
         components: {
             Icon,
@@ -515,9 +515,14 @@
             }
         }
 
+        code:any = null
         async getApportionList() {
             this.loading = true;
-            try {
+            let  {content, totalElements} = appData.apportinSetList
+            this.sharedList = content;
+            this.pages.totalElements = totalElements;
+            this.loading = false;
+            /*try {
                 let {data: {content, totalElements}} = await api.getApportionList({
                     keyword: this.keyword,
                     pageNum: this.pages.pageNum,
@@ -531,7 +536,7 @@
                 this.loading = false;
             } catch (e) {
                 this.loading = false;
-            }
+            }*/
         }
 
         getPage(pageNum?: number) {
