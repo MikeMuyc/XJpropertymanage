@@ -10,7 +10,7 @@
             >
                 <div class="titleLogo">
                     <img src="@manage/images/logo.png">
-                    新疆城建物业
+                    物业管理系统
                 </div>
                 <FormItem prop="userName">
                     <Input
