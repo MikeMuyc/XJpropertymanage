@@ -635,7 +635,7 @@
                 </el-table>
             </div>
         </el-dialog>
-        {{code}}
+
     </div>
 </template>
 <script lang="ts">
@@ -648,7 +648,6 @@
     import householdDetail from './household_detail.vue';
     import * as api from '@manage/api/house/householdInformation'
     import * as app from '@manage/api/app'
-    import * as organization from '@manage/json/houseData'
     import * as organization from '@manage/json/houseData'
     @Component({
         components: {
