@@ -47,21 +47,21 @@
                     </template>
                 </el-table-column>
                 <el-table-column
-                        prop=""
+                        prop="title"
                         label="标题"
                         min-width="150px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
-                        prop=""
+                        prop="content"
                         label="公告内容"
                         min-width="250px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
-                        prop=""
+                        prop="showTime"
                         label="展示时间"
                         min-width="150px"
                         show-overflow-tooltip
@@ -74,9 +74,9 @@
                         show-overflow-tooltip
                 >
                     <template slot-scope="{row}">
-                        <div v-if="row.state==='待发布'" style="color: #ff2c2c;">{{row.state}}</div>
-                        <div v-else-if="row.state==='发布中'" style="color: #3a7ef3;">{{row.state}}</div>
-                        <div v-else style="color: #7c8185;"> {{row.state}}</div>
+                        <div v-if="row.state == 1" style="color: #ff2c2c;">未发布</div>
+                        <div v-else-if="row.state == 2" style="color: #3a7ef3;">已发布</div>
+                        <div v-else style="color: #7c8185;">已关闭</div>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -85,9 +85,9 @@
                 >
                     <template slot-scope="{row}">
                         <div class="tableEdit">
-                            <div class="item" v-if="row.state==='未发布'" @click="startUsingDialog=true">启用</div>
-                            <div class="item" v-else  @click="closeIssue">关闭</div>
-                            <div class="item" >编辑</div>
+                            <div class="item" v-if="row.state== 1" @click="startUsingDialog=true">发布</div>
+                            <div class="item" v-else-if="row.state== 2"  @click="closeIssue">下架</div>
+                            <div class="item" v-if="row.state !== '0'">编辑</div>
                             <div class="item delete" >删除</div>
                         </div>
                     </template>
@@ -104,6 +104,7 @@
         <transition name="rightSlide">
             <history v-show="historyFlag" @close="closeTable" :historyFlag="historyFlag"></history>
         </transition>
+
         <el-dialog
                 :visible.sync="addDialogVisible"
                 custom-class="emDialog"
@@ -115,6 +116,58 @@
             <div class="title" slot="title">
                 <div class="iconColumn"></div>
                 新增公告
+            </div>
+            <div class="MuModalContent">
+                <div class="aline">
+                    <div class="label">公告标题</div>
+                    <div class="info">
+                        <Input placeholder="请输入" style="width: 100%"></Input>
+                    </div>
+                </div>
+                <div class="aline">
+                    <div class="label">公告内容</div>
+                    <div class="info">
+                        <textarea placeholder="请输入" style="width: 100%;height: 200px"></textarea>
+                    </div>
+                </div>
+                <div class="aline">
+                    <div class="label">展示时间</div>
+                    <div class="info">
+                        <RadioGroup v-model="selectTime">
+                            <Radio label="暂不选择" style="margin-right: 60px"></Radio>
+                            <Radio label="选择时间"></Radio>
+                        </RadioGroup>
+                    </div>
+                </div>
+                <div class="aline">
+                    <div class="label">选择时间</div>
+                    <div class="info">
+                        <DatePicker
+                                type="daterange"
+                                format="yyyy-MM-dd"
+                                placeholder="开始时间   ~   结束时间"
+                                style="width: 100%;"
+                                ref="timelist"
+                        ></DatePicker>
+                    </div>
+                </div>
+            </div>
+            <div slot="footer">
+                <div class="pmbtn primary" style="margin-right: 10px" @click="">确定</div>
+                <div class="pmbtn" @click="closeAddDidalog">取消</div>
+            </div>
+        </el-dialog>
+        <el-dialog
+                :visible.sync="addDialogVisible"
+                custom-class="emDialog"
+                width="545px"
+                top="8vh"
+                :close-on-click-modal="false"
+                @close="closeAddDidalog"
+        >
+            <div class="title" slot="title">
+                <div class="iconColumn"></div>
+                编辑公告
             </div>
             <div class="MuModalContent">
                 <div class="aline">
@@ -220,19 +273,31 @@
         coastList: any = [
             {
                 roomId: '',
-                state: '待发布'
+                state: '1',
+                showTime:'2019-9-4 ~ 2019-9-10',
+                content:'2019-9-4 ~ 2019-9-10 每天11点至13点停电',
+                title:'停电公告',
             },
             {
                 roomId: '',
-                state: '发布中'
+                state: '2',
+                showTime:'2019-9-13 ~ 2019-9-15',
+                content:'2019-9-13 ~ 2019-9-15 每天早上8点至10点停水',
+                title:'停水公告',
             },
             {
                 roomId: 'RYY-10-02',
-                state: '未发布'
+                state: '0',
+                showTime:'2019-9-14 ~ 2019-9-20',
+                content:'2019-9-14 ~ 2019-9-20 每晚7点社区中心播放新闻联播',
+                title:'社区活动',
             },
             {
                 roomId: 'RYY-10-02',
-                state: '未发布'
+                state: '0',
+                showTime:'2019-10-11 ~ 2019-12-11',
+                content:'2019-10-11 ~ 2019-12-11 社区免费测血压',
+                title:'免费测血压',
             },
         ]
         addDialogVisible: boolean = false

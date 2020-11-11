@@ -113,11 +113,11 @@
                     },
                 ]
             },
-            {
+            /*{
                 label: "社区安防",
                 routeName: "",
                 iconfont: `iconshequanfang`,
-            },
+            },*/
             {
                 label: "广告管理",
                 routeName: "",

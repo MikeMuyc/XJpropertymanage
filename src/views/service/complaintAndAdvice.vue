@@ -180,7 +180,7 @@
             </div>
         </transition>
         <transition name="rightSlide">
-            <advice v-show="tabName === '意见反馈'" :tabName="tabName" :typeList="typeList" :stateList="stateList"></advice>
+            <advice v-show="tabName === '意见反馈'" :tabName="tabName" :typeList="typeList" :stateList="stateList" :communityList="communityList" :buildingList="buildingList" :houseList="houseList"></advice>
         </transition>
 
         <el-dialog
@@ -386,6 +386,7 @@
                  <div class="pmbtn primary" @click="closeDisposeDetails">确定</div>
              </div>-->
         </el-dialog>
+
     </div>
 </template>
 
@@ -401,6 +402,7 @@
     import * as api from '@manage/api/serve/complaintAndAdvice'
     import * as app from '@manage/api/app'
 
+    import * as advData from '@manage/json/advice'
     @Component({
         components: {
             Icon,
@@ -419,6 +421,7 @@
     })
 
     export default class complaintAndAdvice extends Vue {
+        code:any = null;
         tabName: string = '居民投诉';
         tabList: Array<{ name: string }> = [
             {
@@ -511,9 +514,6 @@
                 this.buildingList = [];
                 this.houseList = []
             }
-
-
-
         }
         mounted() {
             this.getSelection(`stateList`, `投诉处理状态`);
@@ -562,7 +562,10 @@
             if (this.endTime) {
                 obj.endTime = this.endTime
             }
-            try {
+            let {totalElements, content} = advData.complaintList
+            this.pages.totalElements = totalElements
+            this.complaintList = content
+            /*try {
                 let {totalElements, content} = await api.getComplaintList(obj)
                 this.pages.totalElements = totalElements
                 this.complaintList = content
@@ -570,7 +573,7 @@
 
             } catch (e) {
 
-            }
+            }*/
             this.loading = false
         }
 
@@ -631,7 +634,8 @@
 
 
         async openDisposeDetails(row) {
-            this.detailObj = await api.getComplaintDetail(row.id);
+            // this.detailObj = await api.getComplaintDetail(row.id);
+            this.detailObj = advData.complaintDetail;
             this.disposeDetailsDialog = true
         }
 

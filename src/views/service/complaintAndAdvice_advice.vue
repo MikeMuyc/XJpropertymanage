@@ -144,7 +144,7 @@
                 <template slot-scope="{row}">
                     <div class="tableEdit">
                         <div class="item" v-if="row.disposeTypeCode == 1" @click="openDisposeDetails(row.state)">处理</div>
-                        <div class="item" v-else @click="openDisposeDetails(row.state)">详情</div>
+                        <div class="item" v-else @click="openDisposeDetails(row)">详情</div>
                         <div class="item delete" >删除</div>
                     </div>
                 </template>
@@ -188,8 +188,34 @@
                 </div>
                     <div class="aline">
                         <div class="label">房间代码</div>
-                        <div class="info">
-                            <Input placeholder="请输入" style="width: 100%" v-model="addObject.roomId"></Input>
+                        <div class="info" style="justify-content: space-between">
+                            <mixSelect
+                                    :selectList="communityList"
+                                    labelName="title"
+                                    valueName="id"
+                                    childrenName="x"
+                                    placeholder="请选择小区"
+                                    style="width: 130px"
+                                    @sentItem="gethouseData">
+                            </mixSelect>
+                            <mixSelect
+                                    :selectList="buildingList"
+                                    labelName="title"
+                                    valueName="id"
+                                    childrenName="x"
+                                    placeholder="请选择楼栋"
+                                    style="width: 130px"
+                                    @sentItem="gethouseData">
+                            </mixSelect>
+                            <mixSelect
+                                    v-model="addObject.roomId"
+                                    :selectList="houseList"
+                                    labelName="title"
+                                    valueName="id"
+                                    childrenName="x"
+                                    placeholder="请选择房间"
+                                    style="width: 130px">
+                            </mixSelect>
                         </div>
                     </div>
                     <div class="aline">
@@ -326,6 +352,7 @@
                  <div class="pmbtn primary" @click="closeDisposeDetails">确定</div>
              </div>-->
         </el-dialog>
+
     </div>
 </template>
 
@@ -338,6 +365,7 @@
     import typeManage from './components/typeManagement.vue'
     import * as api from '@manage/api/serve/complaintAndAdvice'
     import * as app from '@manage/api/app'
+    import * as advData from '@manage/json/advice'
     @Component({
         components: {
             Icon,
@@ -362,6 +390,11 @@
         @Prop({
             default: [],
         }) stateList!: Array<any>;
+
+        @Prop({
+            default: [],
+        }) communityList!: Array<any>;
+
         @Watch(`tabName`)
         setHeight() {
             if (this.tabName==='意见反馈') {
@@ -417,7 +450,25 @@
         }
         disposeResult: string = '';
         subFlag: boolean = true;
-
+        buildingList: Array<any> = [];
+        houseList: Array<any> = [];
+        code:any = null;
+        async gethouseData(obj: any) {
+            try{
+                let {data} = await api.getTree(obj.level, obj.id)
+                if(obj.level === 1){
+                    this.buildingList = data;
+                    this.houseList = []
+                }
+                else if(obj.level === 2){
+                    this.houseList = data;
+                }
+            }catch (e) {
+                this.$message.error(`获取房间数据失败！`);
+                this.buildingList = [];
+                this.houseList = []
+            }
+        }
         mounted() {
 
         }
@@ -450,15 +501,20 @@
             if(this.endTime){
                 obj.endTime = this.endTime
             }
-            try {
+
+            let {totalElements, content} = advData.adviceList
+            this.pages.totalElements = totalElements
+            this.adviceList = content
+            /*try {
                 let {totalElements,content} = await api.getComplaintList(obj)
                 this.pages.totalElements = totalElements
                 this.adviceList = content
                 this.loading = false
+                this.code = await api.getComplaintList(obj)
 
             } catch (e) {
 
-            }
+            }*/
             this.loading = false
         }
 
@@ -517,8 +573,8 @@
         }
 
         async openDisposeDetails(row) {
-            let data = await api.getComplaintDetail(row.id);
-            this.detailObj = data;
+            //let data = await api.getComplaintDetail(row.id);
+            this.detailObj = advData.adviceDetail;
             this.disposeDetailsDialog = true
 
         }

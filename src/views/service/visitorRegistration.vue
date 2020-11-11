@@ -67,94 +67,65 @@
                 </el-table-column>
 
                 <el-table-column
-                        prop=""
-                        label="申请房间"
-                        min-width="120px"
-                        show-overflow-tooltip
-                >
-                </el-table-column>
-
-                <el-table-column
-                        prop=""
-                        label="申请人"
-                        min-width="100px"
-                        show-overflow-tooltip
-                >
-                </el-table-column>
-
-                <el-table-column
-                        prop=""
-                        label="申请时间"
-                        min-width="100px"
-                        show-overflow-tooltip
-                >
-                    <template slot-scope="{row}">
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        prop=""
-                        label="状态"
-                        min-width="120px"
-                        show-overflow-tooltip
-                >
-                    <template slot-scope="{row}">
-                        <div v-if="row.name==='待使用'" style="color: #ff9900;">{{row.name}}</div>
-                        <div v-else style="color: #7c8185;">{{row.name}}</div>
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        prop=""
+                        prop="name"
                         label="访客姓名"
+                        min-width="100px"
+                        show-overflow-tooltip
+                >
+                </el-table-column>
+
+                <el-table-column
+                        prop="sendTime"
+                        label="到访时间"
+                        min-width="170px"
+                        show-overflow-tooltip
+                >
+                </el-table-column>
+
+                <el-table-column
+                        prop="gender"
+                        label="性别"
                         min-width="80px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
-                        prop=""
-                        label="性别"
-                        min-width="40px"
-                        show-overflow-tooltip
-                >
-                </el-table-column>
-                <el-table-column
-                        prop=""
+                        prop="isCar"
                         label="是否驾车"
-                        min-width="60px"
+                        min-width="80px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
-                        prop=""
+                        prop="carNum"
                         label="车牌号"
-                        min-width="90px"
-                        show-overflow-tooltip
-                >
-                    <template slot-scope="{row}">
-                        <div v-if="row.carNum===''">—</div>
-                        <div v-else> {{row.carNum}}</div>
-                    </template>
-                </el-table-column>
-                <el-table-column
-                        prop=""
-                        label="申请有效期"
-                        min-width="100px"
+                        min-width="120px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
                 <el-table-column
-                        prop=""
-                        label="实际到访时间"
-                        min-width="100px"
+                        prop="roomId"
+                        label="访问楼房号"
+                        min-width="120px"
                         show-overflow-tooltip
                 >
                 </el-table-column>
+                <el-table-column
+                        prop="leaveTime"
+                        label="离开时间"
+                        min-width="120px"
+                        show-overflow-tooltip
+                >
+                </el-table-column>
+
                 <el-table-column
                         label="操作"
-                        width="110px"
+                        width="80px"
+                        align="center"
                 >
                     <template slot-scope="{row}">
                         <div class="tableEdit">
-                            <div class="item"  v-if="row.name==='待使用'" @click="usingRoom">使用</div>
+                            <!--<div class="item"  v-if="row.name==='待使用'" @click="usingRoom">使用</div>-->
                             <div class="item delete" >删除</div>
                         </div>
                     </template>
@@ -268,21 +239,24 @@
     export default class visitorRegistration extends Vue {
         areaList:Array<any>=[];
         recordList:Array<any>=[
-            {name:'待使用',
-                carNum:''
+            {
+                name:'李雷',
+                sendTime:'2020-8-5 09:11:33',
+                gender:'男',
+                isCar:'否',
+                carNum:'-',
+                leaveTime:'2020-8-5 13:24:25',
+                roomId:'NH-EN-003',
             },
-            {name:'已使用',
-                time:'2020-07-07 17:00 ~19:00',
-                carNum:'浙A-123456'
+            {
+                name:'李晶',
+                sendTime:'2020-8-5 09:11:33',
+                gender:'女',
+                isCar:'是',
+                carNum:'浙AH96582',
+                leaveTime:'2020-8-5 13:24:25',
+                roomId:'NH-EN-003',
             },
-            {name:'已失效',
-                carNum:'浙A-123456'
-            },
-            {name:'已使用',
-                carNum:''
-                },
-            {name:'已失效',
-                carNum:'浙A-123456'},
         ];
         isDriver:string='1'
         keyword: string = '';

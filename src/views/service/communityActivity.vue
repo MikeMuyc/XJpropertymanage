@@ -201,6 +201,7 @@
             <checkInfo v-show="checkActivityShow" @close="closeCheckInfoTable" :checkActivityShow="checkActivityShow" :detailId="detailId" :stateList="stateList" :typeList="typeList"></checkInfo>
         </transition>
         <typeManage ref="typeManage"></typeManage>
+        {{code}}
     </div>
 </template>
 <script lang="ts">
@@ -213,6 +214,7 @@
     import checkInfo from  './communityActivity_checkInfo.vue'
     import * as api from '@manage/api/serve/activity'
 
+    import * as actData from '@manage/json/active'
     @Component({
         components: {
             Page,
@@ -232,7 +234,7 @@
         stateList:Array<any>=[];
         typeList:Array<any>=[];
         activityList:Array<any>=[];
-
+        code:any = null;
         keyword: string = '';
         startTime: string = '';
         endTime: string = '';
@@ -305,15 +307,17 @@
             if (this.endTime) {
                 obj.endTime = this.endTime
             }
-            try {
+
+            let {totalElements, content} = actData.activeList
+            this.pages.totalElements = totalElements
+            this.activityList = content
+            /*try {
                 let {totalElements, content} = await api.getActivityList(obj)
                 this.pages.totalElements = totalElements
                 this.activityList = content
-                this.loading = false
-
             } catch (e) {
 
-            }
+            }*/
             this.loading = false
         }
 
