@@ -124,8 +124,8 @@
                     type: 'warning'
                 })
             } else {
-                //this.$router.push({name:'manage'})
-                api.login(this.loginForm)
+                this.$router.push({name:'manage'})
+                /*api.login(this.loginForm)
                     .then(res => {
 
                     if (res.status === 200 || res.status === 201) {
@@ -169,7 +169,7 @@
                             message: `${message}`,
                             type: 'error'
                         })
-                    })
+                    })*/
             }
         }
     }
