@@ -235,7 +235,8 @@
                 <div class="aline">
                     <div class="label"><i class="fontSombal">*</i>公摊比例</div>
                     <div class="info">
-                        <Input type="2fixed" v-model="sharedRadio" style="width:80px;margin-right: 10px" placeholder="百分比" necessary></Input>%
+                        <Input type="2fixed" v-model="sharedRadio" style="width:80px;margin-right: 10px"
+                               placeholder="百分比" necessary></Input>%
                     </div>
                 </div>
             </div>
@@ -345,7 +346,8 @@
                 <div class="aline">
                     <div class="label"><i class="fontSombal">*</i>公摊比例</div>
                     <div class="info">
-                        <Input type="2fixed" v-model="sharedRadio" style="width:80px;margin-right: 10px" placeholder="百分比" necessary></Input>%
+                        <Input type="2fixed" v-model="sharedRadio" style="width:80px;margin-right: 10px"
+                               placeholder="百分比" necessary></Input>%
                     </div>
                 </div>
             </div>
@@ -368,6 +370,7 @@
     import * as api from '@manage/api/propertyCharge/apportion'
     import apsDialog from './components/apportionSetDialog.vue';
     import * as appData from '@manage/json/apportionComputing'
+
     @Component({
         components: {
             Icon,
@@ -395,14 +398,92 @@
                 //Page组件高度为53px，middleline向下外边距10px
                 this.formHeight = (refs.viewbox.clientHeight - refs.searchline.clientHeight) - 15 - 53;
                 this.pages.pageSize = Math.floor((this.formHeight - 49) / 48);
-                this.getcommunityList();
-                this.getSelection(`statusList`, `公摊方式`);
-                this.getSelection(`sharedTypeList`, `公摊方式`);
+                // this.getcommunityList();
+                // this.getSelection(`statusList`, `公摊方式`);
+                // this.getSelection(`sharedTypeList`, `公摊方式`);
                 this.reset();
             }
         }
 
-        communityList: any = [];
+        communityList: any = [
+            {
+                "id": "GLC0000001",
+                "title": "南湖小区",
+                "parentId": null,
+                "expand": false,
+                "belongNum": 5,
+                "level": 1,
+                "checked": false,
+                "property": null,
+                "children": []
+            },
+            {
+                "id": "GLC0000002",
+                "title": "如意苑",
+                "parentId": null,
+                "expand": false,
+                "belongNum": 8,
+                "level": 1,
+                "checked": false,
+                "property": null,
+                "children": []
+            },
+            {
+                "id": "GLC0000003",
+                "title": "红山小区",
+                "parentId": null,
+                "expand": false,
+                "belongNum": 7,
+                "level": 1,
+                "checked": false,
+                "property": null,
+                "children": []
+            },
+            {
+                "id": "GLC0000004",
+                "title": "城建大厦",
+                "parentId": null,
+                "expand": false,
+                "belongNum": 3,
+                "level": 1,
+                "checked": false,
+                "property": null,
+                "children": []
+            },
+            {
+                "id": "GLC0000005",
+                "title": "朝阳明居",
+                "parentId": null,
+                "expand": false,
+                "belongNum": 33,
+                "level": 1,
+                "checked": false,
+                "property": null,
+                "children": []
+            },
+            {
+                "id": "GLC0000006",
+                "title": "办公室",
+                "parentId": null,
+                "expand": false,
+                "belongNum": 0,
+                "level": 1,
+                "checked": false,
+                "property": null,
+                "children": []
+            },
+            {
+                "id": "GLC0000007",
+                "title": "朗天峰景",
+                "parentId": null,
+                "expand": false,
+                "belongNum": 31,
+                "level": 1,
+                "checked": false,
+                "property": null,
+                "children": []
+            },
+        ]
         statusList: any = [];
         projectList: any = [];
         projectList2: any = [];
@@ -515,10 +596,11 @@
             }
         }
 
-        code:any = null
+        code: any = null
+
         async getApportionList() {
             this.loading = true;
-            let  {content, totalElements} = appData.apportinSetList
+            let {content, totalElements} = appData.apportinSetList
             this.sharedList = content;
             this.pages.totalElements = totalElements;
             this.loading = false;

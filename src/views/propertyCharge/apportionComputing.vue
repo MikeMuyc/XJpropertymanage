@@ -578,13 +578,13 @@
             totalElements: 20,
         };
 
-        loading: boolean = true;
+        loading: boolean = false;
         checkList: Array<any> = [];
         noSettings:boolean = false;
 
         mounted() {
             this.$nextTick(async () => {
-                let {data: {totalElements}} = await api.getApportionList({
+                /*let {data: {totalElements}} = await api.getApportionList({
                     pageNum: 1,
                     pageSize: 3,
                 });
@@ -592,18 +592,18 @@
                     this.noSettings = false;
                     setTimeout(()=>{
                         this.setPageSize();
-                        this.reset();
+
                     },100)
                 }
                 else{
                     this.noSettings = true;
-                }
+                }*/
             })
 
-            this.getcommunityList();
-            this.getSelection(`statusList`, `公摊状态`);
-            this.getSelection(`feeType`, `公摊费用类型`);
-
+            // this.getcommunityList();
+            // this.getSelection(`statusList`, `公摊状态`);
+            // this.getSelection(`feeType`, `公摊费用类型`);
+            this.reset();
         }
         setPageSize(){
             let refs: any = this.$refs;
@@ -640,7 +640,7 @@
 
         code:any = null;
         async getApportionList() {
-            this.loading = true;
+            //this.loading = true;
             let {content, totalElements} = appData.apportinList;
             this.sharedList = content;
             this.pages.totalElements = totalElements;

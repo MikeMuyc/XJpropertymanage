@@ -229,16 +229,201 @@
             this.tabName = item.name;
         }
 
+        thisData:any = {
+            "content": [{
+                "rdId": "8bd557d8904344fcb7876c25b431b1c1",
+                "rdName": "kk",
+                "buildingId": "8a1d93c65d104427b07e0ead17cecf89",
+                "buildingName": "3号楼",
+                "projectId": "ddhkpspsbaocyiulcgjtndyn",
+                "projectName": "垃圾费",
+                "totalAp": 190.00,
+                "paidAp": 190.00,
+                "unPaidAp": 0.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "8bd557d8904344fcb7876c25b431b1c1",
+                "rdName": "kk",
+                "buildingId": "8a1d93c65d104427b07e0ead17cecf89",
+                "buildingName": "3号楼",
+                "projectId": "jrtxmywzwdbwrasscztosaii",
+                "projectName": "水费",
+                "totalAp": 250.00,
+                "paidAp": 250.00,
+                "unPaidAp": 0.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "8bd557d8904344fcb7876c25b431b1c1",
+                "rdName": "kk",
+                "buildingId": "8a1d93c65d104427b07e0ead17cecf89",
+                "buildingName": "3号楼",
+                "projectId": "pjpnbsugypvoqsholsugokvd",
+                "projectName": "临时停车费",
+                "totalAp": 39.00,
+                "paidAp": 39.00,
+                "unPaidAp": 0.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "8bd557d8904344fcb7876c25b431b1c1",
+                "rdName": "kk",
+                "buildingId": "8a1d93c65d104427b07e0ead17cecf89",
+                "buildingName": "3号楼",
+                "projectId": "zlvsglelhcpbrfblhzxnnppm",
+                "projectName": "物业服务费",
+                "totalAp": 430.00,
+                "paidAp": 90.00,
+                "unPaidAp": 340.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "8bd557d8904344fcb7876c25b431b1c1",
+                "rdName": "kk",
+                "buildingId": "b784ef01890041caa45a6db921db82fe",
+                "buildingName": null,
+                "projectId": "ddhkpspsbaocyiulcgjtndyn",
+                "projectName": "垃圾费",
+                "totalAp": 0.00,
+                "paidAp": 0.00,
+                "unPaidAp": 0.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "8bd557d8904344fcb7876c25b431b1c1",
+                "rdName": "kk",
+                "buildingId": "b784ef01890041caa45a6db921db82fe",
+                "buildingName": null,
+                "projectId": "zlvsglelhcpbrfblhzxnnppm",
+                "projectName": "物业服务费",
+                "totalAp": 360.00,
+                "paidAp": 0.00,
+                "unPaidAp": 360.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "dtfopcvveoqdianfgqleaxdq",
+                "rdName": "TEST06",
+                "buildingId": "cvwwmnkokeepxjkzqjlkuher",
+                "buildingName": "00号楼",
+                "projectId": "wcgpestvsqkpmfjcloiedbxa",
+                "projectName": "导入收费项目3",
+                "totalAp": 787.03,
+                "paidAp": 400.00,
+                "unPaidAp": 387.03,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "erpeisaziwhfxtzjazcakqyr",
+                "rdName": "ZZ",
+                "buildingId": "hyafbcyyqlpebvvngpnyxhrd",
+                "buildingName": "3301号楼",
+                "projectId": "cbbhlzwpyzfsjqwigchmubnf",
+                "projectName": "电费",
+                "totalAp": 26.67,
+                "paidAp": 0.00,
+                "unPaidAp": 26.67,
+                "lateFee": 18.88,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 18.88
+            }, {
+                "rdId": "erpeisaziwhfxtzjazcakqyr",
+                "rdName": "ZZ",
+                "buildingId": "hyafbcyyqlpebvvngpnyxhrd",
+                "buildingName": "3301号楼",
+                "projectId": "qlimozkwvkftiyzihfyrjoob",
+                "projectName": "物业管理1",
+                "totalAp": 1363.34,
+                "paidAp": 346.67,
+                "unPaidAp": 1016.67,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "erpeisaziwhfxtzjazcakqyr",
+                "rdName": "ZZ",
+                "buildingId": "syrtpkdsbncopgmzbzlxmtob",
+                "buildingName": "3302号楼",
+                "projectId": "qlimozkwvkftiyzihfyrjoob",
+                "projectName": "物业管理1",
+                "totalAp": 256.00,
+                "paidAp": 0.00,
+                "unPaidAp": 256.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "GLC0000001",
+                "rdName": "南湖小区",
+                "buildingId": "DLDM000013",
+                "buildingName": "01号楼",
+                "projectId": "49cb581c6ae04509aa132fa9c4daae9a",
+                "projectName": "屋顶费",
+                "totalAp": 42.00,
+                "paidAp": 0.00,
+                "unPaidAp": 42.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }, {
+                "rdId": "GLC0000003",
+                "rdName": "红山小区",
+                "buildingId": "DLDM000023",
+                "buildingName": "04号楼",
+                "projectId": "03898e301fc64e2491f85204df274fae",
+                "projectName": "门禁电梯费",
+                "totalAp": 377.00,
+                "paidAp": 377.00,
+                "unPaidAp": 0.00,
+                "lateFee": 0.00,
+                "paidLateFee": 0.00,
+                "unPaidLateFee": 0.00
+            }],
+            "pageable": {
+                "sort": {
+                    "sorted": false,
+                    "unsorted": true,
+                    "empty": true
+                },
+                "pageNumber": 0,
+                "pageSize": 12,
+                "offset": 0,
+                "paged": true,
+                "unpaged": false
+            },
+            "totalElements": 40,
+            "totalPages": 4,
+            "last": false,
+            "sort": {
+                "sorted": false,
+                "unsorted": true,
+                "empty": true
+            },
+            "numberOfElements": 12,
+            "first": true,
+            "size": 12,
+            "number": 0,
+            "empty": false
+        };
         async getCostList(){
             this.loading = true;
             try {
-                let {data:{content,totalElements}} = await api.getCostList({
+                /*let {data:{content,totalElements}} = await api.getCostList({
                     rdId:this.rdId,
                     startTime: this.timeList[0],
                     endTime: this.timeList[1],
                     pageNum:this.pages.pageNum,
                     pageSize:this.pages.pageSize,
-                });
+                });*/
+                let {content,totalElements} = this.thisData;
                 this.coastList = content;
                 this.pages.totalElements = totalElements;
             }catch (e) {

@@ -59,7 +59,7 @@
             }
         },
         mounted() {
-            this.getCurUser();
+            //this.getCurUser();
         },
         methods: {
 

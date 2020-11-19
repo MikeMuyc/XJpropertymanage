@@ -172,39 +172,11 @@
             }
         }
         stateList:any = [
-            {
-                name: '全部状态',
-                val: '',
-            },
-            {
-                name: '待审核',
-                val: '0',
-            },
-            {
-                name: '已通过',
-                val: '1',
-            },
-            {
-                name: '已拒绝',
-                val: '2',
-            },
+
         ];
 
         recordList: any = [
-            {
-                username:'admin123',
-                name:'李磊',
-                gender:'男',
-                state:1,
 
-            },
-            {
-                username:'zx1995',
-                name:'张新',
-                gender:'男',
-                state:0,
-                address:'鑫海路68号'
-            },
         ];
         totalDate:Array<{
             "id": string,
@@ -214,7 +186,88 @@
         }> = [];
 
 
-
+        thisData:any = {
+            "content": [{
+                "id": null,
+                "name": "赵子龙333",
+                "sex": "1",
+                "birthday": "2012-09-01",
+                "tel": "17376561062",
+                "photoId": "",
+                "account": "zhaozl333",
+                "idNumber": null,
+                "email": "1547362953@qq.com",
+                "description": null,
+                "accountId": "zpcjraenumnsizmwvwfegacn",
+                "createTime": "2020-09-21 16:23:11",
+                "authentication": 2,
+                "authenticationTime": "2020-09-21 16:23:11",
+                "authenticationId": null,
+                "address": null,
+                "relationCode": "1"
+            }, {
+                "id": null,
+                "name": "赵子龙555",
+                "sex": "1",
+                "birthday": "2012-09-01",
+                "tel": "17376561065",
+                "photoId": "",
+                "account": "zhaozl555",
+                "idNumber": null,
+                "email": "1547362956@qq.com",
+                "description": null,
+                "accountId": "cvmyvdapqjmrzcpaujstpbzl",
+                "createTime": "2020-09-21 16:22:23",
+                "authentication": 2,
+                "authenticationTime": "2020-09-21 16:22:23",
+                "authenticationId": null,
+                "address": null,
+                "relationCode": "1"
+            }, {
+                "id": null,
+                "name": "赵子龙444",
+                "sex": "1",
+                "birthday": "2012-09-01",
+                "tel": "17376561063",
+                "photoId": "",
+                "account": "zhaozl444",
+                "idNumber": null,
+                "email": "1547362955@qq.com",
+                "description": null,
+                "accountId": "gicdkzttzrlprmbkrngjqozo",
+                "createTime": "2020-09-21 15:54:31",
+                "authentication": 1,
+                "authenticationTime": "2020-09-21 15:54:31",
+                "authenticationId": null,
+                "address": null,
+                "relationCode": "1"
+            }],
+            "pageable": {
+                "sort": {
+                    "sorted": false,
+                    "unsorted": true,
+                    "empty": true
+                },
+                "pageNumber": 0,
+                "pageSize": 12,
+                "offset": 0,
+                "unpaged": false,
+                "paged": true
+            },
+            "last": true,
+            "totalPages": 1,
+            "totalElements": 3,
+            "sort": {
+                "sorted": false,
+                "unsorted": true,
+                "empty": true
+            },
+            "numberOfElements": 3,
+            "first": true,
+            "size": 12,
+            "number": 0,
+            "empty": false
+        }
         pages: any = {
             authentication: '',
             relationCode: '',
@@ -246,7 +299,8 @@
                 if (this.pages.tel) {
                     obj.tel = this.pages.tel
                 }
-                let {content, totalElements} = await api.getAuditHisList(obj);
+                //let {content, totalElements} = await api.getAuditHisList(obj);
+                let {content, totalElements} = this.thisData;
                 this.recordList = content;
                 this.pages.totalElements = totalElements;
                 this.loading = false;

@@ -19,7 +19,7 @@
                             </div>
                             <div class="character">
                                 <div class="des">待审核：</div>
-                                <div class="money"><i>{{auditStatistic[`0`] || 0}}</i>个</div>
+                                <div class="money"><i>2</i>个</div>
                             </div>
                         </div>
                         <div class="items">
@@ -29,7 +29,7 @@
                             </div>
                             <div class="character">
                                 <div class="des">已通过：</div>
-                                <div class="money"><i>{{auditStatistic[`1`] || 0}}</i>个</div>
+                                <div class="money"><i>3</i>个</div>
                             </div>
                         </div>
                         <div class="items">
@@ -39,7 +39,7 @@
                             </div>
                             <div class="character">
                                 <div class="des">已拒绝：</div>
-                                <div class="money"><i>{{auditStatistic[`2`] || 0}}</i>个</div>
+                                <div class="money"><i>2</i>个</div>
                             </div>
                         </div>
                     </div>
@@ -235,6 +235,160 @@
         ];
         personList: any = [];
 
+        thisData:any = {
+            "content": [{
+                "id": "123",
+                "name": "admin",
+                "sex": null,
+                "birthday": null,
+                "tel": "15267002015",
+                "photoId": null,
+                "account": "admin",
+                "idNumber": null,
+                "email": null,
+                "description": null,
+                "accountId": "566045cbdd621dff8c0f6bc1",
+                "createTime": "2020-08-09 12:50:33",
+                "authentication": 1,
+                "authenticationTime": "2020-08-09 12:51:01",
+                "authenticationId": "muohplehllgajsotapphxdlw",
+                "address": null,
+                "relationCode": "2"
+            }, {
+                "id": "egvmnlwnfktjxatqoexhygcc",
+                "name": "赵子龙444",
+                "sex": "1",
+                "birthday": "2012-09-01",
+                "tel": "17376561063",
+                "photoId": "",
+                "account": "zhaozl444",
+                "idNumber": null,
+                "email": "1547362955@qq.com",
+                "description": null,
+                "accountId": "gicdkzttzrlprmbkrngjqozo",
+                "createTime": "2020-09-21 15:42:55",
+                "authentication": 1,
+                "authenticationTime": "2020-09-21 15:54:31",
+                "authenticationId": "yfudefmdatbbuprcxgdjtoao",
+                "address": null,
+                "relationCode": "1"
+            }, {
+                "id": "ewyvfvzprzbezbhhdmeqigkb",
+                "name": "赵子龙555",
+                "sex": "1",
+                "birthday": "2012-09-01",
+                "tel": "17376561065",
+                "photoId": "",
+                "account": "zhaozl555",
+                "idNumber": null,
+                "email": "1547362956@qq.com",
+                "description": null,
+                "accountId": "cvmyvdapqjmrzcpaujstpbzl",
+                "createTime": "2020-09-21 15:43:14",
+                "authentication": 2,
+                "authenticationTime": "2020-09-21 16:22:23",
+                "authenticationId": "oxhrxrebwccliwbmzyltiwyi",
+                "address": null,
+                "relationCode": "1"
+            }, {
+                "id": "tcdhnywydxjvendmmvplieow",
+                "name": "赵子龙333",
+                "sex": "1",
+                "birthday": "2012-09-01",
+                "tel": "17376561062",
+                "photoId": "",
+                "account": "zhaozl333",
+                "idNumber": null,
+                "email": "1547362953@qq.com",
+                "description": null,
+                "accountId": "zpcjraenumnsizmwvwfegacn",
+                "createTime": "2020-09-21 00:07:45",
+                "authentication": 2,
+                "authenticationTime": "2020-09-21 16:23:11",
+                "authenticationId": "zpksghajmxxovjphzyjxrhto",
+                "address": null,
+                "relationCode": "1"
+            }, {
+                "id": "vpeiqczihkytehxknxstqyrt",
+                "name": "张艺兴",
+                "sex": "1",
+                "birthday": "2012-09-01",
+                "tel": "17376561010",
+                "photoId": "http://124.160.109.243:31400/easyud/basic/download/file?id=9f2c3be2832b49b594c948bdf1ee1aa6",
+                "account": "zhangyx",
+                "idNumber": null,
+                "email": "1547362950@qq.com",
+                "description": null,
+                "accountId": "qdsljfxnlwcrsiyyexapfkxm",
+                "createTime": "2020-09-02 13:26:56",
+                "authentication": 1,
+                "authenticationTime": "2020-08-09 12:51:01",
+                "authenticationId": "ezfhzabrqakpazgsjtoxpnta",
+                "address": null,
+                "relationCode": "1"
+            }, {
+                "id": "vpeutwrdwxnpuqdegfdlogca",
+                "name": "赵子龙",
+                "sex": "1",
+                "birthday": "2012-09-01",
+                "tel": "17376561022",
+                "photoId": "",
+                "account": "zhaozl",
+                "idNumber": null,
+                "email": "1547362952@qq.com",
+                "description": null,
+                "accountId": "kxeaqonjnnsbezilfhqlxeie",
+                "createTime": "2020-09-13 14:00:05",
+                "authentication": 0,
+                "authenticationTime": null,
+                "authenticationId": "kbtsperfwshrsyacvzpuxymq",
+                "address": null,
+                "relationCode": "1"
+            }, {
+                "id": "xbcumhlsmuhaksjoltbmyxcc",
+                "name": "刘瑶",
+                "sex": "2",
+                "birthday": "1993-03-11",
+                "tel": "18290828087",
+                "photoId": "",
+                "account": "liuy",
+                "idNumber": "",
+                "email": "596935999@qq.com",
+                "description": null,
+                "accountId": "bwbujvfzgpdsqotknahztrhp",
+                "createTime": "2020-10-14 14:08:09",
+                "authentication": 0,
+                "authenticationTime": null,
+                "authenticationId": "blkozeocywmbtaazaaledtzm",
+                "address": null,
+                "relationCode": ""
+            }],
+            "pageable": {
+                "sort": {
+                    "sorted": false,
+                    "unsorted": true,
+                    "empty": true
+                },
+                "pageNumber": 0,
+                "pageSize": 11,
+                "offset": 0,
+                "unpaged": false,
+                "paged": true
+            },
+            "last": true,
+            "totalPages": 1,
+            "totalElements": 7,
+            "sort": {
+                "sorted": false,
+                "unsorted": true,
+                "empty": true
+            },
+            "numberOfElements": 7,
+            "first": true,
+            "size": 11,
+            "number": 0,
+            "empty": false
+        };
         auditList: Array<any> = [];
         auditStatistic: any = {
             '0': '',
@@ -255,7 +409,7 @@
         loading: boolean = false
 
         mounted() {
-            this.getSelection(`personList`, `家庭与房屋关系`)
+            //this.getSelection(`personList`, `家庭与房屋关系`)
             this.$nextTick(() => {
                 let refs: any = this.$refs;
                 let maxHeight = refs.viewbox.clientHeight - 10;
@@ -291,7 +445,8 @@
                 if (this.pages.tel) {
                     obj.tel = this.pages.tel
                 }
-                let {content, totalElements} = await api.getAuditList(obj);
+                // let {content, totalElements} = await api.getAuditList(obj);
+                let {content, totalElements} = this.thisData;
                 this.auditList = content;
                 this.pages.totalElements = totalElements;
                 this.loading = false;
@@ -299,7 +454,7 @@
                 this.loading = false;
                 this.$message.error(`获取用户审核列表失败！`)
             }
-            this.getAuditStatistic();
+            //this.getAuditStatistic();
         }
 
         getPage(pageNum?: number) {

@@ -3,7 +3,7 @@
         <div class="fold-bar" @click="closeMenu">
             <i class="iconfont iconcaidan"></i>
         </div>
-        <vue-perfect-scrollbar style="width:170px;height: calc(100% - 40px)">
+        <vue-perfect-scrollbar ref="leftSideScroll" style="width:170px;height: calc(100% - 40px)">
             <div class="leftSideItem margin" v-for="item in routeMenuOpen">
                 <div class="itemLabel" :title="item.label" :class="{active:itemClass(item),closeActive:itemCloseClass(item)}" @click="itemClick(item)" >
                     <div class="iconbox">
@@ -87,7 +87,9 @@
                         item.showFlag = false;
                         item.routeFather = false;
                     }
-                })
+                });
+                let refs = this.$refs.leftSideScroll;
+                refs.$el.scrollTop = 0;
             },
             getRouteParent(arr,routeName,pName) {
                 let bool = false;
@@ -151,6 +153,7 @@
                 }
                 else if(item.routeName){
                     this.$router.push({name:item.routeName});
+
                 }
             },
             reHeight (bool,length) {

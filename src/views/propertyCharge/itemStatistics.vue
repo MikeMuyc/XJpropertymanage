@@ -167,7 +167,7 @@
         loading: boolean = false
 
         mounted() {
-            this.getPayType();
+            //this.getPayType();
             this.$nextTick(() => {
                 let refs: any = this.$refs;
                 let maxHeight = refs.viewbox.clientHeight - 10;
@@ -179,10 +179,182 @@
             })
         }
 
+        thisData:any = {
+            "content": [{
+                "documentCode": "112020-110000000002",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "2",
+                "payType": "现金",
+                "paidTime": "2020-11-04 16:47:21",
+                "totalAp": 98.33,
+                "roomId": "wbqzcmfhizvmshiqddmlzvpr",
+                "roomName": "1",
+                "projectId": "axrprvieerkjqjswurxeajyb",
+                "projectName": "物业管理附加费用",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "TEST062020-100000000002",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "3",
+                "payType": "扫码支付",
+                "paidTime": "2020-10-12 12:08:51",
+                "totalAp": 200.00,
+                "roomId": "ucfazqulghwjqkvsmzawldby",
+                "roomName": "TEST06-02-1-1001",
+                "projectId": "wcgpestvsqkpmfjcloiedbxa",
+                "projectName": "导入收费项目3",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "TEST062020-100000000002",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "3",
+                "payType": "扫码支付",
+                "paidTime": "2020-10-12 12:08:51",
+                "totalAp": 200.00,
+                "roomId": "ucfazqulghwjqkvsmzawldby",
+                "roomName": "TEST06-02-1-1001",
+                "projectId": "wcgpestvsqkpmfjcloiedbxa",
+                "projectName": "导入收费项目3",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "CHY2020-090000000010",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "4",
+                "payType": "预交抵扣",
+                "paidTime": "2020-09-28 13:52:04",
+                "totalAp": 10.56,
+                "roomId": "HS-4-1-303",
+                "roomName": "HS-4-1-303",
+                "projectId": "ewunrkpkuhmmsggtormjsgps",
+                "projectName": "绿化公摊",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "zzzz002020-090000000002",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "2",
+                "payType": "现金",
+                "paidTime": "2020-09-23 11:02:03",
+                "totalAp": 146.67,
+                "roomId": "ugxkfoytzkhtgysmwgtgjqnt",
+                "roomName": "zz3301101",
+                "projectId": "qlimozkwvkftiyzihfyrjoob",
+                "projectName": "物业管理1",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "NH2020-090000000015",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "4",
+                "payType": "预交抵扣",
+                "paidTime": "2020-09-22 15:49:44",
+                "totalAp": 6.33,
+                "roomId": "SHY-幼儿园楼",
+                "roomName": "SHY-幼儿园楼",
+                "projectId": "a191a3da684e4e22a641f3248f1898ac",
+                "projectName": "垃圾费",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "NH2020-090000000013",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "1",
+                "payType": "pos",
+                "paidTime": "2020-09-22 15:47:58",
+                "totalAp": 6.00,
+                "roomId": "SHY-幼儿园楼",
+                "roomName": "SHY-幼儿园楼",
+                "projectId": "651b54c47a994e07af24390e28ff7b1d",
+                "projectName": "物业费",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "NH2020-090000000012",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "2",
+                "payType": "现金",
+                "paidTime": "2020-09-22 15:47:32",
+                "totalAp": 10.00,
+                "roomId": "SHY-幼儿园楼",
+                "roomName": "SHY-幼儿园楼",
+                "projectId": "a191a3da684e4e22a641f3248f1898ac",
+                "projectName": "垃圾费",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "CHY2020-090000000002",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "4",
+                "payType": "预交抵扣",
+                "paidTime": "2020-09-22 15:30:57",
+                "totalAp": 20.00,
+                "roomId": "HS-4-1-201",
+                "roomName": "HS-4-1-201",
+                "projectId": "f88172a1a69e4cf8b38967f866089617",
+                "projectName": "物业费",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "1002020-090000000002",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "2",
+                "payType": "现金",
+                "paidTime": "2020-09-21 15:07:30",
+                "totalAp": 70.00,
+                "roomId": "dtqgigokmuneedtymnpgrbfd",
+                "roomName": "3",
+                "projectId": "zlvsglelhcpbrfblhzxnnppm",
+                "projectName": "物业服务费",
+                "personName": "超级管理员"
+            }, {
+                "documentCode": "test052020-090000000002",
+                "createPerson": "qdsljfxnlwcrsiyyexapfkxm",
+                "payTypeCode": "1",
+                "payType": "pos",
+                "paidTime": "2020-09-16 18:31:46",
+                "totalAp": 2000.00,
+                "roomId": "tpgoaihwlamosupbkbaavpro",
+                "roomName": "test05-07-1-1-1102",
+                "projectId": "zajmxrixuepdyoqmclwjfcxc",
+                "projectName": "0916收费项目3",
+                "personName": "张艺兴"
+            }, {
+                "documentCode": "zzzz002020-090000000002",
+                "createPerson": "566045cbdd621dff8c0f6bc1",
+                "payTypeCode": "3",
+                "payType": "扫码支付",
+                "paidTime": "2020-09-09 11:24:29",
+                "totalAp": 200.00,
+                "roomId": "ugxkfoytzkhtgysmwgtgjqnt",
+                "roomName": "zz3301101",
+                "projectId": "qlimozkwvkftiyzihfyrjoob",
+                "projectName": "物业管理1",
+                "personName": "超级管理员"
+            }],
+            "pageable": {
+                "sort": {
+                    "sorted": false,
+                    "unsorted": true,
+                    "empty": true
+                },
+                "pageNumber": 0,
+                "pageSize": 12,
+                "offset": 0,
+                "paged": true,
+                "unpaged": false
+            },
+            "totalElements": 52,
+            "totalPages": 5,
+            "last": false,
+            "sort": {
+                "sorted": false,
+                "unsorted": true,
+                "empty": true
+            },
+            "numberOfElements": 12,
+            "first": true,
+            "size": 12,
+            "number": 0,
+            "empty": false
+        }
         async getCashlist(){
             this.loading = true;
             try {
-                let {data: {content, totalElements}} = await api.getCashlist({
+                /*let {data: {content, totalElements}} = await api.getCashlist({
                     pageNum:this.pages.pageNum,
                     pageSize:this.pages.pageSize,
                     startTime:this.startTime,
@@ -190,7 +362,8 @@
                     createPerson:this.createPerson,
                     payTypeCode:this.payTypeCode,
                     roomName:this.roomName,
-                });
+                });*/
+                let  {content, totalElements} = this.thisData;
                 this.tableData = content;
                 this.pages.totalElements = totalElements;
                 this.loading = false;
@@ -202,16 +375,42 @@
         async getCashTotal(){
 
             try {
-                let {data} = await api.getCashTotal({
-                    pageNum:this.pages.pageNum,
-                    pageSize:this.pages.pageSize,
-                    startTime:this.startTime,
-                    endTime:this.endTime,
-                    createPerson:this.createPerson,
-                    payTypeCode:this.payTypeCode,
-                    roomName:this.roomName,
-                });
-                this.totalDate = data;
+                // let {data} = await api.getCashTotal({
+                //     pageNum:this.pages.pageNum,
+                //     pageSize:this.pages.pageSize,
+                //     startTime:this.startTime,
+                //     endTime:this.endTime,
+                //     createPerson:this.createPerson,
+                //     payTypeCode:this.payTypeCode,
+                //     roomName:this.roomName,
+                // });
+
+                this.totalDate = [{
+                    "id": "total",
+                    "name": "总计",
+                    "count": 0,
+                    "keyName": ""
+                }, {
+                    "id": "1",
+                    "name": "pos",
+                    "count": 2178.00,
+                    "keyName": null
+                }, {
+                    "id": "2",
+                    "name": "现金",
+                    "count": 1565.27,
+                    "keyName": null
+                }, {
+                    "id": "3",
+                    "name": "扫码支付",
+                    "count": 872.34,
+                    "keyName": null
+                }, {
+                    "id": "4",
+                    "name": "预交抵扣",
+                    "count": 317.69,
+                    "keyName": null
+                }];
             }catch (e) {
                 this.$message.error(`获取统计数据失败！`)
             }
